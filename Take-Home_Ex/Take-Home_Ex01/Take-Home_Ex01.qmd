@@ -1,0 +1,34 @@
+---
+title: "Take-Home_Ex01"
+author: "Srivatsan Madapuzi Srinivasan"
+---
+
+# Getting Started
+
+## Data Overview
+
+Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling, June 2022 is used to prepare the analytical visualization. It is available at Department of Statistics, Singapore(in short SingStat).
+
+The data consists of the following,
+
+| \#  | Column Name | Column Description |
+|-----|-------------|--------------------|
+| 1   | PA          | Planning Area      |
+| 2   | SZ          | Subzone            |
+| 3   | AG          | Age Group          |
+| 4   | Sex         | Sex                |
+| 5   | TOD         | Type of Dwelling   |
+| 6   | Pop         | Resident Count     |
+| 7   | Time        | Time / Period      |
+
+## Task
+
+To visualize the provided data in Age-sex pyramid, which is an analytical visualization commonly used by demographers to reveal the structure of population by gender and age group, to reveal the demographic structure of Singapore at planning area level by using age-sex pyramid method.
+
+## Step By Step Instructions
+
+| Step No. | Instruction | Screenshot |
+|----------|-------------|------------|
+|          |             |            |
+|          |             |            |
+|          |             |            |
