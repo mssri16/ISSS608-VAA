@@ -131,7 +131,11 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
   <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task">Task</a></li>
-  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link" data-scroll-target="#step-by-step-instructions">Step By Step Instructions</a></li>
+  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link" data-scroll-target="#step-by-step-instructions">Step By Step Instructions</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -221,23 +225,69 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="step-by-step-instructions" class="level2">
 <h2 class="anchored" data-anchor-id="step-by-step-instructions">Step By Step Instructions</h2>
+<section id="data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
 <table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 45%">
+<col style="width: 46%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Step No.</th>
+<th>No.</th>
 <th>Instruction</th>
 <th>Screenshot</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
+<td>1</td>
+<td>Load the downloaded .csv file to Tableau using Connect To a File option. Click <strong>More</strong> under <strong>To a File</strong> option and load the data.</td>
+<td><img src="Take-home_Ex01 SS/Load Csv.png" class="img-fluid" width="240"></td>
+</tr>
+<tr class="even">
+<td>2.</td>
+<td>The loaded file will look like in the given screenshot.</td>
+<td><img src="Take-home_Ex01 SS/Inital File Load.png" class="img-fluid" width="240"></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>The column headers are renamed to readable names for better visualization.</td>
+<td><img src="Take-home_Ex01 SS/Renamed Columns.png" class="img-fluid" width="240"></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Create a new group column for Age group with 10 years as an interval.</td>
+<td><img src="Take-home_Ex01 SS/Age Group.png" class="img-fluid" width="240"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="data-visualization">Data Visualization</h3>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 45%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>No.</th>
+<th>Instruction</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.</td>
+<td>Create a new worksheet and load the data by Age group and Sex as shown in the screenshot.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td></td>
-<td></td>
+<td>2.</td>
+<td>The next step is to visualize the overall population by Age group and Sex in the form of a Age-Pyramid chart. The left side of the chart denotes the male population, while the right side denotes the female population.</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -249,6 +299,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 
 
+</section>
 </section>
 </section>
 

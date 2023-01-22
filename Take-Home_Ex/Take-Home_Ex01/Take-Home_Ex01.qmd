@@ -27,8 +27,19 @@ To visualize the provided data in Age-sex pyramid, which is an analytical visual
 
 ## Step By Step Instructions
 
-| Step No. | Instruction | Screenshot |
-|----------|-------------|------------|
-|          |             |            |
-|          |             |            |
-|          |             |            |
+### Data Preparation
+
+| No. | Instruction                                                                                                                           | Screenshot                                                     |
+|------|---------------------------------|----------------------------------|
+| 1   | Load the downloaded .csv file to Tableau using Connect To a File option. Click **More** under **To a File** option and load the data. | ![](Take-home_Ex01%20SS/Load%20Csv.png){width="240"}           |
+| 2\. | The loaded file will look like in the given screenshot.                                                                               | ![](Take-home_Ex01%20SS/Inital%20File%20Load.png){width="240"} |
+| 3   | The column headers are renamed to readable names for better visualization.                                                            | ![](Take-home_Ex01%20SS/Renamed%20Columns.png){width="240"}    |
+| 4   | Create a new group column for Age group with 10 years as an interval.                                                                 | ![](Take-home_Ex01%20SS/Age%20Group.png){width="240"}          |
+
+### Data Visualization
+
+| No. | Instruction                                                                                                                                                                                                               | Screenshot |
+|------|---------------------------------|---------------------------------|
+| 1\. | Create a new worksheet and load the data by Age group and Sex as shown in the screenshot.                                                                                                                                 |            |
+| 2\. | The next step is to visualize the overall population by Age group and Sex in the form of a Age-Pyramid chart. The left side of the chart denotes the male population, while the right side denotes the female population. |            |
+|     |                                                                                                                                                                                                                           |            |
