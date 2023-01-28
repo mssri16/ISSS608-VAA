@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Srivatsan Madapuzi Srinivasan">
+<meta name="dcterms.date" content="2023-01-28">
 
-<title>ISSS608-VAA - Take-Home_Ex01</title>
+<title>ISSS608-VAA - In-Class_Ex03</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -92,6 +156,17 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-Class Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html">
+ <span class="dropdown-text">In-Class Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Take-Home Exercise</span>
     </a>
@@ -127,30 +202,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
-  <ul class="collapse">
-  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
-  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task">Task</a></li>
-  <li><a href="#step-by-step-instructions" id="toc-step-by-step-instructions" class="nav-link" data-scroll-target="#step-by-step-instructions">Step By Step Instructions</a>
-  <ul class="collapse">
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
-  </ul></li>
-  <li><a href="#observations" id="toc-observations" class="nav-link" data-scroll-target="#observations">Observations</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Take-Home_Ex01</h1>
+<h1 class="title">In-Class_Ex03</h1>
 </div>
 
 
@@ -164,205 +223,37 @@ ul.task-list li input[type="checkbox"] {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 28, 2023</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">January 28, 2023</p>
+    </div>
+  </div>
     
   </div>
   
 
 </header>
 
-<section id="getting-started" class="level1">
-<h1>Getting Started</h1>
-<section id="data-overview" class="level2">
-<h2 class="anchored" data-anchor-id="data-overview">Data Overview</h2>
-<p>Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling, June 2022 is used to prepare the analytical visualization. It is available at Department of Statistics, Singapore(in short SingStat).</p>
-<p>The data consists of the following,</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>#</th>
-<th>Column Name</th>
-<th>Column Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>PA</td>
-<td>Planning Area</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>SZ</td>
-<td>Subzone</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>AG</td>
-<td>Age Group</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Sex</td>
-<td>Sex</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>TOD</td>
-<td>Type of Dwelling</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>Pop</td>
-<td>Resident Count</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>Time</td>
-<td>Time / Period</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="task" class="level2">
-<h2 class="anchored" data-anchor-id="task">Task</h2>
-<p>To visualize the provided data in Age-sex pyramid, which is an analytical visualization commonly used by demographers to reveal the structure of population by gender and age group, to reveal the demographic structure of Singapore at planning area level by using age-sex pyramid method.</p>
-</section>
-<section id="step-by-step-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="step-by-step-instructions">Step By Step Instructions</h2>
-<section id="data-preparation" class="level3">
-<h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
-<table class="table">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 66%">
-<col style="width: 31%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>No.</th>
-<th>Instruction</th>
-<th>Screenshot</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Load the downloaded .csv file to Tableau using Connect To a File option. Click <strong>More</strong> under <strong>To a File</strong> option and load the data.</td>
-<td><img src="Take-home_Ex01 SS/Load Csv.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>2.</td>
-<td>The loaded file will look like in the given screenshot.</td>
-<td><img src="Take-home_Ex01 SS/Inital File Load.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>The column headers are renamed to readable names for better visualization.</td>
-<td><img src="Take-home_Ex01 SS/Renamed Columns.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Create a new group column for Age group with 10 years as an interval.</td>
-<td><img src="Take-home_Ex01 SS/Age Group.png" class="img-fluid" width="240"></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="data-visualization" class="level3">
-<h3 class="anchored" data-anchor-id="data-visualization">Data Visualization</h3>
-<table class="table">
-<colgroup>
-<col style="width: 1%">
-<col style="width: 72%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>No.</th>
-<th>Instruction</th>
-<th>Screenshot</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1.</td>
-<td>Create a new worksheet and load the data by Age group and Sex as shown in the screenshot.</td>
-<td><img src="Take-home_Ex01 SS/Inital File Load.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>2.</td>
-<td>Create a new worksheet. Create a new calculated field for Female and Male population separately.</td>
-<td><img src="Take-home_Ex01 SS/Male Female Population Calculated Field.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="odd">
-<td>3.</td>
-<td>After loading the Male population to the columns and the Age group to rows, right click on the x axis and select edit axis. Click on the checkbox Reversed and close the dialog box.</td>
-<td><img src="Take-home_Ex01 SS/Reversed male Axis.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>4.</td>
-<td>The next step is to visualize the overall population by Age group and Sex in the form of a Age-Pyramid chart. The left side of the chart denotes the male population, while the right side denotes the female population.</td>
-<td><img src="Take-home_Ex01 SS/Overall Population Pyramid.png" class="img-fluid" width="527"></td>
-</tr>
-<tr class="odd">
-<td>5.</td>
-<td>Create a new worksheet to load the text table of the Singapore population by planning area and sex.</td>
-<td><img src="Take-home_Ex01 SS/Population by PA.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>6.</td>
-<td><p>Before proceeding to the next step, click on the arrow button and select Create Calculated Field option. Enter the following formula for columns and rows separately.</p>
-<p><strong>Columns</strong>: <em>(INDEX()-1)%(ROUND(SQRT(SIZE())))</em></p>
-<p><strong>Rows</strong>: <em>INT((INDEX()-1)/(ROUND(SQRT(SIZE()))))</em></p></td>
-<td><img src="images/image-266072943.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>Right click on the new Column and Row and select the option Convert to Discrete as shown in the screenshot.</td>
-<td><img src="Take-home_Ex01 SS/Convert Discrete.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>In order to create a trellis chart, load Columns and Rows to their respective name tags in tableau worksheet.</td>
-<td><img src="images/image-172804424.png" class="img-fluid"></td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>Select the arrow button on the Columns and select Edit Table Calculation, and select Planning Area checkbox under Compute using. Repeat the same for Rows as well. This will enable us to create a trellis chart by top 9 highest population by planning areas.</td>
-<td><img src="Take-home_Ex01 SS/Compute Table Calculation.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>Repeat the same steps performed in 3 and 4 to create an Age pyramid chart.</td>
-<td><img src="images/image-333113132.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>Select the Planning Area column and enable the option Show mark labels to view the planning area names on the trellis age pyramid chart.</td>
-<td><img src="images/image-718826342.png" class="img-fluid" width="240"></td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>Create a new Dashboard and load the text table and the trellis age pyramid chart created. Adjust the size and select Automatic under Size in the left side pane.</td>
-<td><img src="images/image-1461787611.png" class="img-fluid" width="240"></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="observations" class="level2">
-<h2 class="anchored" data-anchor-id="observations">Observations</h2>
-<ol type="1">
-<li><strong>Birth rate or Fertility late is low.</strong> In all the top 9 populated planning areas the bars in the lower region of the graph is smaller compared to the other bars above them. This indicates that the birth rate/fertility rate is low in all these places. This type of pyramid is called as constrictive pyramid, which indicates decline in population. In other words this can also be called as a negative growth in the population. Unless the population starts reproducing, the country will have a demographic emergency.</li>
-<li><strong>Bars of age groups from 20 to 40 is higher than 0 to 20.</strong> Age groups between 20 and 40 has a higher width. This suggests that there are a lot of foreigners/immigrants who are in Singapore for higher studies or work.</li>
-<li><strong>Very high population for Age group from 50 to 70.</strong> Among most of the graphs the number of people falling under the age category between 50 and 70 is very high. This suggests that there are a lot more elderly people in Singapore compared to other age groups. This usually occurs in a developed country where there is very good health care and very high level of education.</li>
-<li><strong>Male population higher than female population.</strong> By comparing the individual age groups in the top 9 populated planning areas of Singapore, most of the graphs follow the same trend where the male population is higher than the female population.</li>
-</ol>
+<p>---</p>
+<p>Installing and loading R packages</p>
+<p>Two packages will be installed and loaded. They are tidyverse and ggiraph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggiraph,tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Importing data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Exam_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

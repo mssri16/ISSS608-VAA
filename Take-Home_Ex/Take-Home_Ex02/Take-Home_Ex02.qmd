@@ -1,0 +1,10 @@
+---
+title: "Take-Home_Ex02"
+author: "Srivatsan Madapuzi Srinivasan"
+---
+
+# 1. Overview
+
+This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practice learnt in Lesson 1 and 2.
+
+The dataset used in take-home exercise 1 is downloaded [Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling June 2022](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data), from [Singstat](https://www.singstat.gov.sg/) and processed by RStudio `tidyverse` family of packages and visualized by `ggplot2` and its extensions.

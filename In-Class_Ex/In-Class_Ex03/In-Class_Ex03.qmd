@@ -1,0 +1,28 @@
+---
+title: "In-Class_Ex03"
+author: "Srivatsan Madapuzi Srinivasan"
+date: 28 January 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
+
+\-\--
+
+Installing and loading R packages
+
+Two packages will be installed and loaded. They are tidyverse and ggiraph.
+
+```{r}
+pacman::p_load(ggiraph,tidyverse)
+```
+
+Importing data
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```

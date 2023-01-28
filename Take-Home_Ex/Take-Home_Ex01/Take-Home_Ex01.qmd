@@ -11,23 +11,15 @@ Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwell
 
 The data consists of the following,
 
-+----------+----------------------------------------------+--------------------+
-| \#       | Column Name                                  | Column Description |
-+==========+==============================================+====================+
-| 1        | PA                                           | Planning Area      |
-+----------+----------------------------------------------+--------------------+
-| 2        | SZ                                           | Subzone            |
-+----------+----------------------------------------------+--------------------+
-| 3        | AG                                           | Age Group          |
-+----------+----------------------------------------------+--------------------+
-| 4        | Sex                                          | Sex                |
-+----------+----------------------------------------------+--------------------+
-| 5        | TOD                                          | Type of Dwelling   |
-+----------+----------------------------------------------+--------------------+
-| 6        | Pop                                          | Resident Count     |
-+----------+----------------------------------------------+--------------------+
-| 7        | Time                                         | Time / Period      |
-+----------+----------------------------------------------+--------------------+
+| \#  | Column Name | Column Description |
+|-----|-------------|--------------------|
+| 1   | PA          | Planning Area      |
+| 2   | SZ          | Subzone            |
+| 3   | AG          | Age Group          |
+| 4   | Sex         | Sex                |
+| 5   | TOD         | Type of Dwelling   |
+| 6   | Pop         | Resident Count     |
+| 7   | Time        | Time / Period      |
 
 ## Task
 
@@ -37,17 +29,12 @@ To visualize the provided data in Age-sex pyramid, which is an analytical visual
 
 ### Data Preparation
 
-+-----------+---------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
-| No.       | Instruction                                                                                                                           | Screenshot                                                     |
-+===========+=======================================================================================================================================+================================================================+
-| 1         | Load the downloaded .csv file to Tableau using Connect To a File option. Click **More** under **To a File** option and load the data. | ![](Take-home_Ex01%20SS/Load%20Csv.png){width="240"}           |
-+-----------+---------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
-| 2\.       | The loaded file will look like in the given screenshot.                                                                               | ![](Take-home_Ex01%20SS/Inital%20File%20Load.png){width="240"} |
-+-----------+---------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
-| 3         | The column headers are renamed to readable names for better visualization.                                                            | ![](Take-home_Ex01%20SS/Renamed%20Columns.png){width="240"}    |
-+-----------+---------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
-| 4         | Create a new group column for Age group with 10 years as an interval.                                                                 | ![](Take-home_Ex01%20SS/Age%20Group.png){width="240"}          |
-+-----------+---------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
+| No. | Instruction                                                                                                                           | Screenshot                                                     |
+|-----|---------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| 1   | Load the downloaded .csv file to Tableau using Connect To a File option. Click **More** under **To a File** option and load the data. | ![](Take-home_Ex01%20SS/Load%20Csv.png){width="240"}           |
+| 2\. | The loaded file will look like in the given screenshot.                                                                               | ![](Take-home_Ex01%20SS/Inital%20File%20Load.png){width="240"} |
+| 3   | The column headers are renamed to readable names for better visualization.                                                            | ![](Take-home_Ex01%20SS/Renamed%20Columns.png){width="240"}    |
+| 4   | Create a new group column for Age group with 10 years as an interval.                                                                 | ![](Take-home_Ex01%20SS/Age%20Group.png){width="240"}          |
 
 ### Data Visualization
 
