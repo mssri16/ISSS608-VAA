@@ -39,6 +39,6 @@
     "href": "In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html",
     "title": "In-Class_Ex03",
     "section": "",
-    "text": "---\nInstalling and loading R packages\nTwo packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph,tidyverse)\n\nImporting data\n\nexam_data <- read_csv(\"data/Exam_data.csv\")"
+    "text": "---\nInstalling and loading R packages\nTwo packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph,tidyverse)\n\nImporting data\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nggplot(data = exam_data,aes(x=MATHS)) + geom_histogram(bins = 10,boundary=100)"
   }
 ]
