@@ -5,6 +5,21 @@ author: "Srivatsan Madapuzi Srinivasan"
 
 # 1. Overview
 
-This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practice learnt in Lesson 1 and 2.
+This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practices learned in Lessons 1 and 2.
 
-The dataset used in take-home exercise 1 is downloaded [Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling June 2022](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data), from [Singstat](https://www.singstat.gov.sg/) and processed by RStudio `tidyverse` family of packages and visualized by `ggplot2` and its extensions.
+The dataset used in take-home exercise 1 is downloaded from [Singapore Residents by Planning Area / Subzone, Age Group, Sex, and Type of Dwelin ling June 2022](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data), from [Singstat](https://www.singstat.gov.sg/) and processed by RStudio `tidyverse` family of packages and visualized by `ggplot2` and its extensions.
+
+# **2. Data Preparation**
+
+# 3. Age Pyramid Charge
+
+## Critique
+
+1.  The Age Pyramid chart design is not clear in what the whole visualization is trying to communicate.
+2.  The heading of the graph should convey the purpose of the visualization of the data.
+3.  The heading can be renamed as Top 9 Highest Population or Bottom 9 Highest Population of Singapore, by configuring the data.
+
+## Aesthetics
+
+1.  The chosen colors to depict the male and female population is apt for the purports
+2.  Its not advisable to display the label of the value individual bars on the pyramid chart.
