@@ -32,7 +32,7 @@
     "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html",
     "title": "Take-Home_Ex02",
     "section": "",
-    "text": "1. Overview\nThis take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practice learnt in Lesson 1 and 2.\nThe dataset used in take-home exercise 1 is downloaded Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling June 2022, from Singstat and processed by RStudio tidyverse family of packages and visualized by ggplot2 and its extensions."
+    "text": "This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practices learned in Lessons 1 and 2.\nThe dataset used in take-home exercise 1 is downloaded from Singapore Residents by Planning Area / Subzone, Age Group, Sex, and Type of Dwelin ling June 2022, from Singstat and processed by RStudio tidyverse family of packages and visualized by ggplot2 and its extensions."
   },
   {
     "objectID": "In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html",
@@ -40,5 +40,26 @@
     "title": "In-Class_Ex03",
     "section": "",
     "text": "---\nInstalling and loading R packages\nTwo packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph,tidyverse)\n\nImporting data\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nggplot(data = exam_data,aes(x=MATHS)) + geom_histogram(bins = 10,boundary=100)"
+  },
+  {
+    "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#critique",
+    "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#critique",
+    "title": "Take-Home_Ex02",
+    "section": "Critique",
+    "text": "Critique\n\nThe Age Pyramid chart design is not clear in what the whole visualization is trying to communicate.\nThe heading of the graph should convey the purpose of the visualization of the data.\nThe heading can be renamed as Top 9 Highest Population or Bottom 9 Highest Population of Singapore, by configuring the data."
+  },
+  {
+    "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#aesthetics",
+    "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#aesthetics",
+    "title": "Take-Home_Ex02",
+    "section": "Aesthetics",
+    "text": "Aesthetics\n\nThe chosen colors to depict the male and female population is apt for the purports\nIts not advisable to display the label of the value individual bars on the pyramid chart."
+  },
+  {
+    "objectID": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
+    "href": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
+    "title": "In-Class_Ex04",
+    "section": "",
+    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<"
   }
 ]

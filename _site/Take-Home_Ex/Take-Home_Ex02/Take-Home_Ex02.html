@@ -92,6 +92,17 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-Class Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html">
+ <span class="dropdown-text">In-Class Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Take-Home Exercise</span>
     </a>
@@ -132,6 +143,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">1. Overview</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><strong>2. Data Preparation</strong></a></li>
+  <li><a href="#age-pyramid-charge" id="toc-age-pyramid-charge" class="nav-link" data-scroll-target="#age-pyramid-charge">3. Age Pyramid Charge</a>
+  <ul class="collapse">
+  <li><a href="#critique" id="toc-critique" class="nav-link" data-scroll-target="#critique">Critique</a></li>
+  <li><a href="#aesthetics" id="toc-aesthetics" class="nav-link" data-scroll-target="#aesthetics">Aesthetics</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -163,10 +180,36 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level1">
 <h1>1. Overview</h1>
-<p>This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practice learnt in Lesson 1 and 2.</p>
-<p>The dataset used in take-home exercise 1 is downloaded <a href="https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data">Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling June 2022</a>, from <a href="https://www.singstat.gov.sg/">Singstat</a> and processed by RStudio <code>tidyverse</code> family of packages and visualized by <code>ggplot2</code> and its extensions.</p>
+<p>This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practices learned in Lessons 1 and 2.</p>
+<p>The dataset used in take-home exercise 1 is downloaded from <a href="https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data">Singapore Residents by Planning Area / Subzone, Age Group, Sex, and Type of Dwelin ling June 2022</a>, from <a href="https://www.singstat.gov.sg/">Singstat</a> and processed by RStudio <code>tidyverse</code> family of packages and visualized by <code>ggplot2</code> and its extensions.</p>
+</section>
+<section id="data-preparation" class="level1">
+<h1><strong>2. Data Preparation</strong></h1>
+</section>
+<section id="age-pyramid-charge" class="level1">
+<h1>3. Age Pyramid Charge</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Age-Sex Pyramid for Singapore Planning Area.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<section id="critique" class="level2">
+<h2 class="anchored" data-anchor-id="critique">Critique</h2>
+<ol type="1">
+<li>The Age Pyramid chart design is not clear in what the whole visualization is trying to communicate.</li>
+<li>The heading of the graph should convey the purpose of the visualization of the data.</li>
+<li>The heading can be renamed as Top 9 Highest Population or Bottom 9 Highest Population of Singapore, by configuring the data.</li>
+</ol>
+</section>
+<section id="aesthetics" class="level2">
+<h2 class="anchored" data-anchor-id="aesthetics">Aesthetics</h2>
+<ol type="1">
+<li>The chosen colors to depict the male and female population is apt for the purports</li>
+<li>Its not advisable to display the label of the value individual bars on the pyramid chart.</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

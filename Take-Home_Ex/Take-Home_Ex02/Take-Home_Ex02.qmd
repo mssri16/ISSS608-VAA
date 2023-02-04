@@ -13,6 +13,8 @@ The dataset used in take-home exercise 1 is downloaded from [Singapore Residents
 
 # 3. Age Pyramid Charge
 
+![](images/Age-Sex%20Pyramid%20for%20Singapore%20Planning%20Area.png){fig-align="center"}
+
 ## Critique
 
 1.  The Age Pyramid chart design is not clear in what the whole visualization is trying to communicate.
