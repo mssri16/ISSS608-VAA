@@ -1,6 +1,14 @@
 ---
 title: "Take-Home_Ex02"
 author: "Srivatsan Madapuzi Srinivasan"
+date: 28 January 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
 ---
 
 # 1. Overview
@@ -9,9 +17,7 @@ This take-home exercise is done based on a take-home exercise 1 submission prepa
 
 The dataset used in take-home exercise 1 is downloaded from [Singapore Residents by Planning Area / Subzone, Age Group, Sex, and Type of Dwelin ling June 2022](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data), from [Singstat](https://www.singstat.gov.sg/) and processed by RStudio `tidyverse` family of packages and visualized by `ggplot2` and its extensions.
 
-# **2. Data Preparation**
-
-# 3. Age Pyramid Charge
+# 2. Original - Age Pyramid Chart
 
 ![](images/Age-Sex%20Pyramid%20for%20Singapore%20Planning%20Area.png){fig-align="center"}
 
@@ -24,4 +30,84 @@ The dataset used in take-home exercise 1 is downloaded from [Singapore Residents
 ## Aesthetics
 
 1.  The chosen colors to depict the male and female population is apt for the purports
-2.  Its not advisable to display the label of the value individual bars on the pyramid chart.
+2.  It's not advisable to display the label of the value individual bars on the pyramid chart.
+
+# 3. Redesign - Age Pyramid Chart
+
+## Data Preparation
+
+1.  The first step is to load the necessary packages.
+
+    ```{r}
+    pacman::p_load(ggiraph, tidyverse)
+    ```
+
+2.  Load the CSV file.
+
+    ```{r}
+    data <- read_csv("Data/respopagesextod2022.csv")
+    ```
+
+3.  Regroup the 'AgeGroup' column from 5 years interval to 10 years interval.
+
+    ```{r}
+    data <- data %>%
+      mutate(AgeGroup= ifelse(AG=='0_to_4'|AG=='5_to_9', '0-9', AG)) %>%
+      mutate(AgeGroup= ifelse(AG=='10_to_14'|AG=='15_to_19', '10-19', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='20_to_24'|AG=='25_to_29', '20-29', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='30_to_34'|AG=='35_to_39', '30-39', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='40_to_44'|AG=='45_to_49', '40-49', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='50_to_54'|AG=='55_to_59', '50-59', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='60_to_64'|AG=='65_to_69', '60-69', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='70_to_74'|AG=='75_to_79', '70-79', AgeGroup)) %>%
+      mutate(AgeGroup= ifelse(AG=='80_to_84'|AG=='85_to_89', '80-89', AgeGroup))
+    ```
+
+4.  Filter and group the data to have the top 9 highest-populated planning areas in Singapore.
+
+    ```{r}
+    grouped_data <- data %>%
+      select(PA,AgeGroup, Sex, Pop) %>%
+      group_by(PA) %>%
+      summarise(Population = sum(Pop)) %>%
+      arrange(desc(Population))
+
+    grouped_data <- grouped_data[1:9,]
+    top_PA <- grouped_data[['PA']]
+    ```
+
+5.  Fetch the resultant data frame that contains the required details grouped accordingly.
+
+    ```{r}
+    top_pop_data <- data %>%
+      select(PA, AgeGroup, Sex, Pop) %>%
+      filter(PA %in% top_PA) %>%
+      group_by(PA, AgeGroup, Sex) %>%
+      summarise(Population = sum(Pop)) %>%
+      mutate(Population = ifelse(Sex=='Females', Population, Population*-1)) %>%
+      arrange(desc(AgeGroup))
+    ```
+
+## Plot the clean data
+
+The data is plotted and visually represented in the form of an age pyramid chart. To achieve this, ggplot2 is used. Geom_col_interactive is used to show the pyramid chart, in which the exact values can be seen by hovering over the bars.
+
+```{r}
+pyramid <- ggplot(data=top_pop_data, aes(y=AgeGroup, x=Population)) + geom_col_interactive(stat = "identity", aes(fill=Sex, tooltip=paste(
+  paste("Age Group:   ", AgeGroup), 
+  paste("Planning Area:   ", PA), 
+  paste("Sex:   ", Sex), 
+  paste("Population:   ", ifelse(Sex=='Males', Population*-1, Population)), 
+  sep = "\n" 
+  ))) + 
+  scale_fill_manual(values=c("Males" = "#6CA8E8", "Females" = "#F987B1")) + 
+  scale_x_continuous(breaks = c(-20000, -10000, 0, 10000, 20000),
+                     labels = c("20k", "10k \nMale", "0", "10k \nFemale", "20k")) +
+  ggtitle(label = "Singapore Residents by Planning Area, Age Group, Sex June 2022", subtitle = "Top 9 Highest Population By Planning Area, Singapore") + 
+  facet_wrap(~ PA) + theme(legend.position = "none", plot.title = element_text(size=26, face = "bold", hjust = 0.9), plot.subtitle = element_text(size=20, hjust = 0.5))
+girafe(
+  ggobj = pyramid,
+  width_svg = 12,
+  height_svg = 12*0.618
+)
+```

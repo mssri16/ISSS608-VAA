@@ -53,13 +53,27 @@
     "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#aesthetics",
     "title": "Take-Home_Ex02",
     "section": "Aesthetics",
-    "text": "Aesthetics\n\nThe chosen colors to depict the male and female population is apt for the purports\nIts not advisable to display the label of the value individual bars on the pyramid chart."
+    "text": "Aesthetics\n\nThe chosen colors to depict the male and female population is apt for the purports\nIt’s not advisable to display the label of the value individual bars on the pyramid chart."
   },
   {
     "objectID": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
     "href": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
     "title": "In-Class_Ex04",
     "section": "",
-    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<"
+    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<\n\n\n\n\n\n\np <- ggplot(data=exam_data, \n            aes(x = MATHS,\n                y = ENGLISH)) +\n  geom_point(dotsize = 1) +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))\n\nggplotly(p)"
+  },
+  {
+    "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#data-preparation",
+    "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#data-preparation",
+    "title": "Take-Home_Ex02",
+    "section": "Data Preparation",
+    "text": "Data Preparation\n\nThe first step is to load the necessary packages.\n\npacman::p_load(ggiraph, tidyverse)\n\nLoad the CSV file.\n\ndata <- read_csv(\"Data/respopagesextod2022.csv\")\n\nRegroup the ‘AgeGroup’ column from 5 years interval to 10 years interval.\n\ndata <- data %>%\n  mutate(AgeGroup= ifelse(AG=='0_to_4'|AG=='5_to_9', '0-9', AG)) %>%\n  mutate(AgeGroup= ifelse(AG=='10_to_14'|AG=='15_to_19', '10-19', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='20_to_24'|AG=='25_to_29', '20-29', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='30_to_34'|AG=='35_to_39', '30-39', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='40_to_44'|AG=='45_to_49', '40-49', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='50_to_54'|AG=='55_to_59', '50-59', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='60_to_64'|AG=='65_to_69', '60-69', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='70_to_74'|AG=='75_to_79', '70-79', AgeGroup)) %>%\n  mutate(AgeGroup= ifelse(AG=='80_to_84'|AG=='85_to_89', '80-89', AgeGroup))\n\nFilter and group the data to have the top 9 highest-populated planning areas in Singapore.\n\ngrouped_data <- data %>%\n  select(PA,AgeGroup, Sex, Pop) %>%\n  group_by(PA) %>%\n  summarise(Population = sum(Pop)) %>%\n  arrange(desc(Population))\n\ngrouped_data <- grouped_data[1:9,]\ntop_PA <- grouped_data[['PA']]\n\nFetch the resultant data frame that contains the required details grouped accordingly.\n\ntop_pop_data <- data %>%\n  select(PA, AgeGroup, Sex, Pop) %>%\n  filter(PA %in% top_PA) %>%\n  group_by(PA, AgeGroup, Sex) %>%\n  summarise(Population = sum(Pop)) %>%\n  mutate(Population = ifelse(Sex=='Females', Population, Population*-1)) %>%\n  arrange(desc(AgeGroup))"
+  },
+  {
+    "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#plot-the-clean-data",
+    "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#plot-the-clean-data",
+    "title": "Take-Home_Ex02",
+    "section": "Plot the clean data",
+    "text": "Plot the clean data\nThe data is plotted and visually represented in the form of an age pyramid chart. To achieve this, ggplot2 is used. Geom_col_interactive is used to show the pyramid chart, in which the exact values can be seen by hovering over the bars.\n\npyramid <- ggplot(data=top_pop_data, aes(y=AgeGroup, x=Population)) + geom_col_interactive(stat = \"identity\", aes(fill=Sex, tooltip=paste(\n  paste(\"Age Group:   \", AgeGroup), \n  paste(\"Planning Area:   \", PA), \n  paste(\"Sex:   \", Sex), \n  paste(\"Population:   \", ifelse(Sex=='Males', Population*-1, Population)), \n  sep = \"\\n\" \n  ))) + \n  scale_fill_manual(values=c(\"Males\" = \"#6CA8E8\", \"Females\" = \"#F987B1\")) + \n  scale_x_continuous(breaks = c(-20000, -10000, 0, 10000, 20000),\n                     labels = c(\"20k\", \"10k \\nMale\", \"0\", \"10k \\nFemale\", \"20k\")) +\n  ggtitle(label = \"Singapore Residents by Planning Area, Age Group, Sex June 2022\", subtitle = \"Top 9 Highest Population By Planning Area, Singapore\") + \n  facet_wrap(~ PA) + theme(legend.position = \"none\", plot.title = element_text(size=26, face = \"bold\", hjust = 0.9), plot.subtitle = element_text(size=20, hjust = 0.5))\ngirafe(\n  ggobj = pyramid,\n  width_svg = 12,\n  height_svg = 12*0.618\n)"
   }
 ]
