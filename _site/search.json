@@ -7,18 +7,39 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ISSS608-VAA",
-    "section": "",
-    "text": "Welcome to ISSS608 Visual Analytics and Applications Homepage. In this website, you will find my coursework prepared for this course."
-  },
-  {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
     "title": "Hands-on Exercise 1",
     "section": "",
     "text": "The code chunk below uses p_load() of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)\n\n\n\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\nRows: 322 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): ID, CLASS, GENDER, RACE\ndbl (3): ENGLISH, MATHS, SCIENCE\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html",
+    "href": "In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html",
+    "title": "In-Class_Ex03",
+    "section": "",
+    "text": "---\nInstalling and loading R packages\nTwo packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph,tidyverse)\n\nImporting data\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nggplot(data = exam_data,aes(x=MATHS)) + geom_histogram(bins = 10,boundary=100)"
+  },
+  {
+    "objectID": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
+    "href": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
+    "title": "In-Class_Ex04",
+    "section": "",
+    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse,ggstatsplot)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<\n\n\n\n\n\n\np <- ggplot(data=exam_data, \n            aes(x = MATHS,\n                y = ENGLISH)) +\n  geom_point() +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))\n\nggplotly(p)\n\n\n\n\n\n\nggbetweenstats(\n  data = exam_data,\n  x = GENDER, \n  y = MATHS,\n  type = \"np\",\n  messages = FALSE\n)\n\n\n\n\n\nggscatterstats(\n  data = exam_data,\n  x = MATHS,\n  y = ENGLISH,\n  marginal = FALSE,\n  )\n\n\n\n\n\n#car_resale <- read_xls(\"data/ToyotaCorolla.xls\")"
+  },
+  {
+    "objectID": "In-Class_Ex/In-Class_Ex05/In-Class_Ex05.html",
+    "href": "In-Class_Ex/In-Class_Ex05/In-Class_Ex05.html",
+    "title": "In-Class_Ex05",
+    "section": "",
+    "text": "pacman::p_load(corrplot, ggstatsplot, tidyverse)\n\n\nwine <- read_csv(\"data/wine_quality.csv\")\n\n\nggstatsplot::ggcorrmat(\n  data = wine, \n  cor.vars = 1:11)\n\n\n\n\n\nggstatsplot::ggcorrmat(\n  data = wine, \n  cor.vars = 1:11,\n  ggcorrplot.args = list(outline.color = \"black\", \n                         hc.order = TRUE,\n                         tl.cex = 10),\n  title    = \"Correlogram for wine dataset\",\n  subtitle = \"Four pairs are no significant at p < 0.05\"\n)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ISSS608-VAA",
+    "section": "",
+    "text": "Welcome to ISSS608 Visual Analytics and Applications Homepage. In this website, you will find my coursework prepared for this course."
   },
   {
     "objectID": "Take-Home_Ex/Take-Home_Ex01/Take-Home_Ex01.html",
@@ -35,13 +56,6 @@
     "text": "This take-home exercise is done based on a take-home exercise 1 submission prepared by a classmate. The peer submission will be critiqued in terms of clarity and aesthetics, and the original design will be remade using the data visualization principles and best practices learned in Lessons 1 and 2.\nThe dataset used in take-home exercise 1 is downloaded from Singapore Residents by Planning Area / Subzone, Age Group, Sex, and Type of Dwelin ling June 2022, from Singstat and processed by RStudio tidyverse family of packages and visualized by ggplot2 and its extensions."
   },
   {
-    "objectID": "In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html",
-    "href": "In-Class_Ex/In-Class_Ex03/In-Class_Ex03.html",
-    "title": "In-Class_Ex03",
-    "section": "",
-    "text": "---\nInstalling and loading R packages\nTwo packages will be installed and loaded. They are tidyverse and ggiraph.\n\npacman::p_load(ggiraph,tidyverse)\n\nImporting data\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nggplot(data = exam_data,aes(x=MATHS)) + geom_histogram(bins = 10,boundary=100)"
-  },
-  {
     "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#critique",
     "href": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#critique",
     "title": "Take-Home_Ex02",
@@ -54,13 +68,6 @@
     "title": "Take-Home_Ex02",
     "section": "Aesthetics",
     "text": "Aesthetics\n\nThe chosen colors to depict the male and female population is apt for the purports\nIt’s not advisable to display the label of the value individual bars on the pyramid chart."
-  },
-  {
-    "objectID": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
-    "href": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
-    "title": "In-Class_Ex04",
-    "section": "",
-    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse,ggstatsplot)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<\n\n\n\n\n\n\np <- ggplot(data=exam_data, \n            aes(x = MATHS,\n                y = ENGLISH)) +\n  geom_point() +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))\n\nggplotly(p)\n\n\n\n\n\n\nggbetweenstats(\n  data = exam_data,\n  x = GENDER, \n  y = MATHS,\n  type = \"np\",\n  messages = FALSE\n)\n\n\n\n\n\nggscatterstats(\n  data = exam_data,\n  x = MATHS,\n  y = ENGLISH,\n  marginal = FALSE,\n  )\n\n\n\n\n\n#car_resale <- read_xls(\"data/ToyotaCorolla.xls\")"
   },
   {
     "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#data-preparation",
