@@ -1,0 +1,61 @@
+---
+title: "In-Class_Ex04"
+author: "Srivatsan Madapuzi Srinivasan"
+date: "4 February 2023"
+date-modified: "`r Sys.Date()`"
+format: html
+execute: 
+  echo: true
+  eval: true
+  warning: false
+editor: visual
+---
+
+```{r}
+pacman::p_load(plotly,DT,patchwork,tidyverse,ggstatsplot)
+```
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```
+
+```{r}
+plot_ly(data = exam_data, 
+             x = ~MATHS, 
+             y = ~ENGLISH,
+             color = ~RACE) #<<
+```
+
+```{r}
+p <- ggplot(data=exam_data, 
+            aes(x = MATHS,
+                y = ENGLISH)) +
+  geom_point() +
+  coord_cartesian(xlim=c(0,100),
+                  ylim=c(0,100))
+
+ggplotly(p)
+```
+
+```{r}
+ggbetweenstats(
+  data = exam_data,
+  x = GENDER, 
+  y = MATHS,
+  type = "np",
+  messages = FALSE
+)
+```
+
+```{r}
+ggscatterstats(
+  data = exam_data,
+  x = MATHS,
+  y = ENGLISH,
+  marginal = FALSE,
+  )
+```
+
+```{r}
+#car_resale <- read_xls("data/ToyotaCorolla.xls")
+```

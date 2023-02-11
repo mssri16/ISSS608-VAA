@@ -60,7 +60,7 @@
     "href": "In-Class_Ex/In-Class_Ex04/In-Class_Ex04.html",
     "title": "In-Class_Ex04",
     "section": "",
-    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<\n\n\n\n\n\n\np <- ggplot(data=exam_data, \n            aes(x = MATHS,\n                y = ENGLISH)) +\n  geom_point(dotsize = 1) +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))\n\nggplotly(p)"
+    "text": "pacman::p_load(plotly,DT,patchwork,tidyverse,ggstatsplot)\n\n\nexam_data <- read_csv(\"data/Exam_data.csv\")\n\n\nplot_ly(data = exam_data, \n             x = ~MATHS, \n             y = ~ENGLISH,\n             color = ~RACE) #<<\n\n\n\n\n\n\np <- ggplot(data=exam_data, \n            aes(x = MATHS,\n                y = ENGLISH)) +\n  geom_point() +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))\n\nggplotly(p)\n\n\n\n\n\n\nggbetweenstats(\n  data = exam_data,\n  x = GENDER, \n  y = MATHS,\n  type = \"np\",\n  messages = FALSE\n)\n\n\n\n\n\nggscatterstats(\n  data = exam_data,\n  x = MATHS,\n  y = ENGLISH,\n  marginal = FALSE,\n  )\n\n\n\n\n\n#car_resale <- read_xls(\"data/ToyotaCorolla.xls\")"
   },
   {
     "objectID": "Take-Home_Ex/Take-Home_Ex02/Take-Home_Ex02.html#data-preparation",
