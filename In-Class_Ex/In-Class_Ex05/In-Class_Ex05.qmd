@@ -10,3 +10,7 @@ execute:
   warning: false
 editor: visual
 ---
+
+```{r}
+pacman::p_load()
+```
