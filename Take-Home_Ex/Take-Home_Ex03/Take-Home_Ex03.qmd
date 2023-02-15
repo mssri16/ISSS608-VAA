@@ -1,4 +1,165 @@
 ---
 title: "Take-Home_Ex03"
 author: "Srivatsan Madapuzi Srinivasan"
+date: "15 February 2023"
+date-modified: "`r Sys.Date()`"
+format: html
+execute: 
+  echo: true
+  eval: true
+  warning: false
+editor: visual
 ---
+
+# Overview
+
+The objective is to uncover the salient patterns of the resale prices of public housing property by residential towns and estates in Singapore by using appropriate analytical visualization techniques.
+
+The primary focus is on **3-ROOM, 4-ROOM, and 5-ROOM types** for the period 2022.
+
+# Data
+
+*Resale flat prices based on registration date from Jan-2017 onwards* is used to prepare the analytical visualization. It is available at [Data.gov.sg](https://data.gov.sg/).
+
+## Data Preparation
+
+### Loading the packages
+
+The required packages are loaded for the purpose of visualization.
+
+```{r}
+pacman::p_load(ggstatsplot, plotly, crosstalk, DT, ggdist, gganimate, FunnelPlotR, knitr, tidyverse)
+```
+
+### Loading the data
+
+Load the downloaded data from [Data.gov.sg](www.data.gov.sg).
+
+```{r}
+flats_data <- read_csv("data/resale-flat-prices-based-on-registration-date-from-jan-2017-onwards.csv")
+```
+
+### Filter the data
+
+Filter the data for the year **2022** and flat type **3 Room**, **4 Room,** and **5 Room**.
+
+```{r}
+filtered_flats_data <- filter(flats_data, grepl('2022', month) & flat_type %in% c("3 ROOM", "4 ROOM","5 ROOM"))
+```
+
+After exploring the data, it was discovered that the columns storey_range and remaining_lease requires the necessary change.
+
+### Change the order of the storey_range
+
+Change the order of the storey_range,
+
+```{r}
+storey_order <- c("01 TO 03", "04 TO 06", "07 TO 09", "10 TO 12", "13 TO 15", "16 TO 18", "19 TO 21", "22 TO 24", "25 TO 27", "28 TO 30", "31 TO 33", "34 TO 36", "37 TO 39", "40 TO 42", "43 TO 45", "46 TO 48", "49 TO 51")  
+
+updated_flat_data <- filtered_flats_data %>%
+  mutate (storey_range = factor(storey_range, levels = storey_order)) %>%
+  ungroup()
+```
+
+### Change the type of remaining_lease
+
+Change the type of remaining_lease from string to integer,
+
+```{r}
+updated_flat_data$remaining_lease_int <- as.numeric(gsub("([0-9]+).*$", "\\1", filtered_flats_data$remaining_lease))
+```
+
+## Data Visualization
+
+Now we will be exploring the data visually,
+
+### Distribution of storey_range
+
+```{r}
+ggplot(data = updated_flat_data,
+       aes(y = storey_range)) +
+  geom_bar() 
+```
+
+From the above graph, it can be observed that storey_range from 01 TO 30 have the majority of the flats in Singapore, 2022.
+
+### One-way ANOVA flat_type and resale_price
+
+```{r}
+ggbetweenstats(
+  data = updated_flat_data,
+  x = flat_type,
+  y = resale_price, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+From performing the one-way ANOVA test between flat_type and resale_price, the p-value(\<0.05) suggests that the mean value of various flat_type is different from one another.
+
+H~0~: Mean resale_price values of different flat_type are equal to one another.
+
+H~1~: Mean resale_price values of different flat_type are unequal.
+
+### Visualizing uncertainty with Hypothetical Outcome Plots(HOPs)
+
+```{r}
+devtools::install_github("wilkelab/ungeviz")
+```
+
+```{r}
+library(ungeviz)
+filtered_sr_flats_data <- filter(updated_flat_data, storey_range %in% c("43 TO 45"))
+```
+
+```{r}
+ggplot(data = filtered_sr_flats_data, 
+       (aes(x = factor(flat_type), y = resale_price))) +
+  geom_point(position = position_jitter(
+    width = 0.05), 
+    color = "#0072B2", alpha = 1/2) +
+  geom_hpline(data = sampler(25, group = flat_type), color = "#D55E00") +
+  theme_bw() + 
+  # `.draw` is a generated column indicating the sample draw
+  transition_states(.draw, 1, 3)
+```
+
+To furthermore analyse the data individually for different, lets find the unique number of different categorical values in the dataset.
+
+```{r}
+unique(updated_flat_data$town)
+```
+
+```{r}
+unique(updated_flat_data$flat_model)
+```
+
+```{r}
+unique(updated_flat_data$floor_area_sqm)
+```
+
+### One-way ANOVA flat_type and floor_area_sqm
+
+```{r}
+ggbetweenstats(
+  data = updated_flat_data,
+  x = flat_type,
+  y = floor_area_sqm, 
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+From performing the one-way ANOVA test between flat_type and floor_area_sqm, the p-value(\<0.05) suggests that the mean value of various flat_type is different from one another.
+
+H~0~: Mean floor_area_sqm values of different flat_type are equal to one another.
+
+H~1~: Mean floor_area_sqm values of different flat_type are unequal.
