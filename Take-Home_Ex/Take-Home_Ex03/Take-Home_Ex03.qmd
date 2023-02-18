@@ -28,7 +28,7 @@ The primary focus is on **3-ROOM, 4-ROOM, and 5-ROOM types** for the period 2022
 The required packages are loaded for the purpose of visualization.
 
 ```{r}
-pacman::p_load(ggstatsplot, plotly, crosstalk, DT, ggdist, gganimate, FunnelPlotR, knitr, tidyverse)
+pacman::p_load(ggstatsplot, plotly, crosstalk, DT, ggdist, gganimate, FunnelPlotR, knitr, gifski, tidyverse)
 ```
 
 ### Loading the data
