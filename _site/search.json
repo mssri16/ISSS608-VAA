@@ -131,40 +131,5 @@
     "title": "Take-Home_Ex04",
     "section": "Analyze and Clean Data",
     "text": "Analyze and Clean Data\nHere are the following observations after scanning through the data,\n\nThe data consists of the merchandise exports and imports by Region/Market monthly in two different worksheets.\nThe data consists of both country and continental merchandise exports and imports amount.\nThe data is inconsistent as the country exports and imports amount are in thousands while the continental exports and imports amount are in millions.\n\nTo clean the data the following steps are followed,\n\nPivot the import and export details of countries and continents,\n\n\nimportCountryDataPivot <- imported_countries %>%\n  pivot_longer(cols = 2:37, names_to = \"yearmonth\", values_to = \"Imports\" )\nimportContinentDataPivot <- imported_continents %>%\n  pivot_longer(cols = 2:37, names_to = \"yearmonth\", values_to = \"Imports\" )\n\nexportCountryDataPivot <- exported_countries %>%\n  pivot_longer(cols = 2:37, names_to = \"yearmonth\", values_to = \"Exports\" )\nexportContinentDataPivot <- exported_continents %>%\n  pivot_longer(cols = 2:37, names_to = \"yearmonth\", values_to = \"Exports\" )\n\ncolnames(importCountryDataPivot) <- c(\"Country\", \"Date\", \"Imports\")\ncolnames(importContinentDataPivot) <- c(\"Continent\", \"Date\", \"Imports\")\n\ncolnames(exportCountryDataPivot) <- c(\"Country\", \"Date\", \"Exports\")\ncolnames(exportContinentDataPivot) <- c(\"Continent\", \"Date\", \"Exports\")\n\n\nTo make the data consistent, convert the country’s merchandise imports and exports into millions.\n\n\nimportCountryDataPivot$Imports <- ifelse(grepl(\"(Thousand Dollars)\", importCountryDataPivot$Country, fixed = TRUE), importCountryDataPivot$Imports/1000, importCountryDataPivot$Imports)\n\nimportContinentDataPivot$Imports <- ifelse(grepl(\"(Thousand Dollars)\", importContinentDataPivot$Continent, fixed = TRUE), importContinentDataPivot$Imports/1000, importContinentDataPivot$Imports)\n\nexportCountryDataPivot$Exports <- ifelse(grepl(\"(Thousand Dollars)\", exportCountryDataPivot$Country, fixed = TRUE), exportCountryDataPivot$Exports/1000, exportCountryDataPivot$Exports)\n\nexportContinentDataPivot$Exports <- ifelse(grepl(\"(Thousand Dollars)\", exportContinentDataPivot$Continent, fixed = TRUE), exportContinentDataPivot$Exports/1000, exportContinentDataPivot$Exports)\n\n\nTo remove the (Thousand Dollars) and (Million Dollars) appended to each row.\n\n\nimportCountryDataPivot$Country<-gsub(\" [(]Thousand Dollars[)]\",\"\",as.character(importCountryDataPivot$Country))\nimportContinentDataPivot$Continent<-gsub(\" [(]Thousand Dollars[)]\",\"\",as.character(importContinentDataPivot$Continent))\n\nexportCountryDataPivot$Country<-gsub(\" [(]Thousand Dollars[)]\",\"\",as.character(exportCountryDataPivot$Country))\nexportContinentDataPivot$Continent<-gsub(\" [(]Thousand Dollars[)]\",\"\",as.character(exportContinentDataPivot$Continent))\n\nimportCountryDataPivot$Country<-gsub(\" [(]Million Dollars[)]\",\"\",as.character(importCountryDataPivot$Country))\nimportContinentDataPivot$Continent<-gsub(\" [(]Million Dollars[)]\",\"\",as.character(importContinentDataPivot$Continent))\n\nexportCountryDataPivot$Country<-gsub(\" [(]Million Dollars[)]\",\"\",as.character(exportCountryDataPivot$Country))\nexportContinentDataPivot$Continent<-gsub(\" [(]Million Dollars[)]\",\"\",as.character(exportContinentDataPivot$Continent))\n\n\nTo cast the yearmonth column into Date type.\n\n\nimportCountryDataPivot$Date <- as.Date(paste(importCountryDataPivot$Date, \"01\"), format = \"%Y %b %d\")\nimportContinentDataPivot$Date <- as.Date(paste(importContinentDataPivot$Date, \"01\"), format = \"%Y %b %d\")\nexportCountryDataPivot$Date <- as.Date(paste(exportCountryDataPivot$Date, \"01\"), format = \"%Y %b %d\")\nexportContinentDataPivot$Date <- as.Date(paste(exportContinentDataPivot$Date, \"01\"), format = \"%Y %b %d\")\n\n\nPivot the countries into the required format for cycleplot.\n\n\nimportCountryDataCyclePivot <- importCountryDataPivot %>%\n  pivot_wider(names_from = \"Country\", values_from = \"Imports\" )\nexportCountryDataCyclePivot <- exportCountryDataPivot %>%\n  pivot_wider(names_from = \"Country\", values_from = \"Exports\" )\n\n\nTo add month and year columns to the data for further use.\n\n\nimportCountryDataCyclePivot$month <- factor(month(importCountryDataCyclePivot$`Date`), \n                    levels=1:12, \n                    labels=month.abb, \n                    ordered=TRUE) \nimportCountryDataCyclePivot$year <- year(ymd(importCountryDataCyclePivot$`Date`))\n\nimportContinentDataPivot$month <- factor(month(importContinentDataPivot$`Date`), \n                    levels=1:12, \n                    labels=month.abb, \n                    ordered=TRUE) \nimportContinentDataPivot$year <- year(ymd(importContinentDataPivot$`Date`))\n\nexportCountryDataCyclePivot$month <- factor(month(exportCountryDataCyclePivot$`Date`), \n                    levels=1:12, \n                    labels=month.abb, \n                    ordered=TRUE) \nexportCountryDataCyclePivot$year <- year(ymd(exportCountryDataCyclePivot$`Date`))\n\nexportContinentDataPivot$month <- factor(month(exportContinentDataPivot$`Date`), \n                    levels=1:12, \n                    labels=month.abb, \n                    ordered=TRUE) \nexportContinentDataPivot$year <- year(ymd(exportContinentDataPivot$`Date`))"
-  },
-  {
-    "objectID": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#continent-imports",
-    "href": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#continent-imports",
-    "title": "Take-Home_Ex04",
-    "section": "Continent Imports",
-    "text": "Continent Imports\n{r} continent_export"
-  },
-  {
-    "objectID": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#continent-exports",
-    "href": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#continent-exports",
-    "title": "Take-Home_Ex04",
-    "section": "Continent Exports",
-    "text": "Continent Exports\n{r} continent_export ```"
-  },
-  {
-    "objectID": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#imports",
-    "href": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#imports",
-    "title": "Take-Home_Ex04",
-    "section": "Imports",
-    "text": "Imports\n{r} ggplot(importContinentDataPivot, aes(x = Date, y = Imports, color = Continent)) + geom_line()+ labs (x = “Date”, y = “Import in Million Dollars”, fill = “Continent”, title = “Import in Million Dollars by Continent”) + scale_x_date(date_labels = “%b-%y”)+ theme_bw()"
-  },
-  {
-    "objectID": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#exports",
-    "href": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#exports",
-    "title": "Take-Home_Ex04",
-    "section": "Exports",
-    "text": "Exports\nggplot(exportContinentDataPivot, aes(x = Date, y = Exports, color = Continent)) + geom_line()+ labs (x = “Date”, y = “Export in Million Dollars”, fill = “Continent”, title = “Export in Million Dollars by Continent”) + scale_x_date(date_labels = “%b-%y”)+ theme_bw()\n:::\n\n::: {.panel-tabset}\n\n## Imports\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(importContinentDataPivot,\n       aes(x = `Date`, y = `Imports`, color = `Continent`)) +\n  geom_line()+\n  labs (x = \"Date\",\n        y = \"Import in Million Dollars\",\n        fill = \"Continent\",\n        title = \"Import in Million Dollars by Continent\") +\n  scale_x_date(date_labels = \"%b-%y\")+\n  theme_bw() \n\n\n\n:::"
-  },
-  {
-    "objectID": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#exports-1",
-    "href": "Take-Home_Ex/Take-Home_Ex04/Take-Home_Ex04.html#exports-1",
-    "title": "Take-Home_Ex04",
-    "section": "Exports",
-    "text": "Exports\n\nggplot(exportContinentDataPivot,\n       aes(x = `Date`, y = Exports, color = Continent)) +\n  geom_line()+\n  labs (x = \"Date\",\n        y = \"Export in Million Dollars\",\n        fill = \"Continent\",\n        title = \"Export in Million Dollars by Continent\") +\n  scale_x_date(date_labels = \"%b-%y\")+\n  theme_bw()\n\n\n\n\n:::"
   }
 ]
