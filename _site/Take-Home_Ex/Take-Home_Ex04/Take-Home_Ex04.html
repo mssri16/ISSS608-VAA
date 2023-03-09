@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Srivatsan Madapuzi Srinivasan">
+<meta name="dcterms.date" content="2023-02-25">
 
 <title>ISSS608-VAA - Take-Home_Ex04</title>
 <style>
@@ -21,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -210,7 +274,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a>
+  <ul class="collapse">
+  <li><a href="#load-the-packages" id="toc-load-the-packages" class="nav-link" data-scroll-target="#load-the-packages">Load the packages</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the data</a></li>
+  <li><a href="#analyze-and-clean-data" id="toc-analyze-and-clean-data" class="nav-link" data-scroll-target="#analyze-and-clean-data">Analyze and Clean Data</a></li>
+  </ul></li>
+  <li><a href="#continent-country-trade-visual-analysis" id="toc-continent-country-trade-visual-analysis" class="nav-link" data-scroll-target="#continent-country-trade-visual-analysis">Continent &amp; Country Trade Visual Analysis</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -231,15 +309,302 @@ ul.task-list li input[type="checkbox"] {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 25, 2023</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">March 9, 2023</p>
+    </div>
+  </div>
     
   </div>
   
 
 </header>
 
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>The objective is to uncover the impact of COVID-19 as well as the global &amp; political dynamic in 2022 on Singapore’s bilateral trade.</p>
+<p>The primary focus is on the period between January 2020 and December 2022.</p>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<p>The merchandise trade data is available at <a href="https://data.gov.sg/">Data.gov.sg</a> under the sub-section of Merchandise Trade by Region/Market. The data is downloaded by clicking on the link Download all in Excel under the previously mentioned sub-section.</p>
+</section>
+<section id="data-preparation" class="level1">
+<h1>Data Preparation</h1>
+<section id="load-the-packages" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-packages">Load the packages</h2>
+<p>The required packages are to be loaded for the purpose of visualization.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl, lubridate, stringr, dplyr, gganimate, transformr, patchwork, countrycode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the data</h2>
+<p>Run the following code to load the imported data for continents and countries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>imported_continents <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/Merchandise Trade by RegionMarket.xlsx"</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"T1"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">range =</span> <span class="fu">cell_rows</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">16</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>, <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"2020"</span>, <span class="st">"2021"</span>, <span class="st">"2022"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>imported_continents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 37
+  `Data Series`  2020 …¹ 2020 …² 2020 …³ 2020 …⁴ 2020 …⁵ 2020 …⁶ 2020 …⁷ 2020 …⁸
+  &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 America (Mill…   4676.   4588.   4870.   4886.   4132    4667.   4686.   4259 
+2 Asia (Million…  28200.  25845.  26128.  27823.  26052.  26767.  24779.  21719.
+3 Europe (Milli…   6087.   6134.   6285.   5317.   5225    5475.   4961.   4629 
+4 Oceania (Mill…    541.   1413.    577.    478.    586.    493.    456.    442.
+5 Africa (Milli…    649.    499.    314.    297.    476.    441.    238.    410.
+# … with 28 more variables: `2020 Apr` &lt;dbl&gt;, `2020 Mar` &lt;dbl&gt;,
+#   `2020 Feb` &lt;dbl&gt;, `2020 Jan` &lt;dbl&gt;, `2021 Dec` &lt;dbl&gt;, `2021 Nov` &lt;dbl&gt;,
+#   `2021 Oct` &lt;dbl&gt;, `2021 Sep` &lt;dbl&gt;, `2021 Aug` &lt;dbl&gt;, `2021 Jul` &lt;dbl&gt;,
+#   `2021 Jun` &lt;dbl&gt;, `2021 May` &lt;dbl&gt;, `2021 Apr` &lt;dbl&gt;, `2021 Mar` &lt;dbl&gt;,
+#   `2021 Feb` &lt;dbl&gt;, `2021 Jan` &lt;dbl&gt;, `2022 Dec` &lt;dbl&gt;, `2022 Nov` &lt;dbl&gt;,
+#   `2022 Oct` &lt;dbl&gt;, `2022 Sep` &lt;dbl&gt;, `2022 Aug` &lt;dbl&gt;, `2022 Jul` &lt;dbl&gt;,
+#   `2022 Jun` &lt;dbl&gt;, `2022 May` &lt;dbl&gt;, `2022 Apr` &lt;dbl&gt;, `2022 Mar` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>imported_countries <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/Merchandise Trade by RegionMarket.xlsx"</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"T1"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">range =</span> <span class="fu">cell_rows</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>, <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"2020"</span>, <span class="st">"2021"</span>, <span class="st">"2022"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:-</span><span class="dv">7</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>imported_countries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 84 × 37
+   `Data Series` 2020 …¹ 2020 …² 2020 …³ 2020 …⁴ 2020 …⁵ 2020 …⁶ 2020 …⁷ 2020 …⁸
+   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Belgium (Tho…  133445  209539   83657   80823   99286  102317   73457   77945
+ 2 Denmark (Tho…  143209   45010   43480   70494   44398   95598   41203   65305
+ 3 France (Thou… 1141603 1498854 1922407 1167166  922015 1088034  895505  690063
+ 4 Germany, Fed…  980296  978208  980882  972416  931876 1061128  978806  892172
+ 5 Greece (Thou…   10429   10423   11378   11241   11809   11655   11839   11181
+ 6 Ireland (Tho…  250720  252154  187158  112631   94134  104004  111688   93891
+ 7 Italy (Thous…  613730  476816  487904  409767  461599  382371  442728  295412
+ 8 Luxembourg (…   11891    3758   14577    3471    3479   29389   23619    3436
+ 9 Netherlands …  257892  296798  303736  373881  286459  252322  273072  255200
+10 United Kingd…  755324  635420  802840  762179  863043  830637  739542 1104023
+# … with 74 more rows, 28 more variables: `2020 Apr` &lt;dbl&gt;, `2020 Mar` &lt;dbl&gt;,
+#   `2020 Feb` &lt;dbl&gt;, `2020 Jan` &lt;dbl&gt;, `2021 Dec` &lt;dbl&gt;, `2021 Nov` &lt;dbl&gt;,
+#   `2021 Oct` &lt;dbl&gt;, `2021 Sep` &lt;dbl&gt;, `2021 Aug` &lt;dbl&gt;, `2021 Jul` &lt;dbl&gt;,
+#   `2021 Jun` &lt;dbl&gt;, `2021 May` &lt;dbl&gt;, `2021 Apr` &lt;dbl&gt;, `2021 Mar` &lt;dbl&gt;,
+#   `2021 Feb` &lt;dbl&gt;, `2021 Jan` &lt;dbl&gt;, `2022 Dec` &lt;dbl&gt;, `2022 Nov` &lt;dbl&gt;,
+#   `2022 Oct` &lt;dbl&gt;, `2022 Sep` &lt;dbl&gt;, `2022 Aug` &lt;dbl&gt;, `2022 Jul` &lt;dbl&gt;,
+#   `2022 Jun` &lt;dbl&gt;, `2022 May` &lt;dbl&gt;, `2022 Apr` &lt;dbl&gt;, `2022 Mar` &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>Similar to the way imported data is imported, import the exported data from the sheet T2.</p>
+<div class="cell">
+<details>
+<summary>Exported Data Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>exported_continents <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/Merchandise Trade by RegionMarket.xlsx"</span>, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"T2"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">range =</span> <span class="fu">cell_rows</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">16</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>, <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"2020"</span>, <span class="st">"2021"</span>, <span class="st">"2022"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>exported_countries <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/Merchandise Trade by RegionMarket.xlsx"</span>, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"T2"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">range =</span> <span class="fu">cell_rows</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>, <span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"2020"</span>, <span class="st">"2021"</span>, <span class="st">"2022"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">:-</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="analyze-and-clean-data" class="level2">
+<h2 class="anchored" data-anchor-id="analyze-and-clean-data">Analyze and Clean Data</h2>
+<p>Here are the following observations after scanning through the data,</p>
+<ol type="1">
+<li>The data consists of the merchandise exports and imports by Region/Market monthly in two different worksheets.</li>
+<li>The data consists of both country and continental merchandise exports and imports amount.</li>
+<li>The data is inconsistent as the country exports and imports amount are in thousands while the continental exports and imports amount are in millions.</li>
+</ol>
+<p>To clean the data the following steps are followed,</p>
+<ol type="1">
+<li>Pivot the import and export details of countries and continents,</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>importCountryDataPivot <span class="ot">&lt;-</span> imported_countries <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">37</span>, <span class="at">names_to =</span> <span class="st">"yearmonth"</span>, <span class="at">values_to =</span> <span class="st">"Imports"</span> )</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot <span class="ot">&lt;-</span> imported_continents <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">37</span>, <span class="at">names_to =</span> <span class="st">"yearmonth"</span>, <span class="at">values_to =</span> <span class="st">"Imports"</span> )</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>exportCountryDataPivot <span class="ot">&lt;-</span> exported_countries <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">37</span>, <span class="at">names_to =</span> <span class="st">"yearmonth"</span>, <span class="at">values_to =</span> <span class="st">"Exports"</span> )</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot <span class="ot">&lt;-</span> exported_continents <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">37</span>, <span class="at">names_to =</span> <span class="st">"yearmonth"</span>, <span class="at">values_to =</span> <span class="st">"Exports"</span> )</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(importCountryDataPivot) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Date"</span>, <span class="st">"Imports"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(importContinentDataPivot) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Continent"</span>, <span class="st">"Date"</span>, <span class="st">"Imports"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exportCountryDataPivot) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Date"</span>, <span class="st">"Exports"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exportContinentDataPivot) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Continent"</span>, <span class="st">"Date"</span>, <span class="st">"Exports"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>To make the data consistent, convert the country’s merchandise imports and exports into millions.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>importCountryDataPivot<span class="sc">$</span>Imports <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">"(Thousand Dollars)"</span>, importCountryDataPivot<span class="sc">$</span>Country, <span class="at">fixed =</span> <span class="cn">TRUE</span>), importCountryDataPivot<span class="sc">$</span>Imports<span class="sc">/</span><span class="dv">1000</span>, importCountryDataPivot<span class="sc">$</span>Imports)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot<span class="sc">$</span>Imports <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">"(Thousand Dollars)"</span>, importContinentDataPivot<span class="sc">$</span>Continent, <span class="at">fixed =</span> <span class="cn">TRUE</span>), importContinentDataPivot<span class="sc">$</span>Imports<span class="sc">/</span><span class="dv">1000</span>, importContinentDataPivot<span class="sc">$</span>Imports)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>exportCountryDataPivot<span class="sc">$</span>Exports <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">"(Thousand Dollars)"</span>, exportCountryDataPivot<span class="sc">$</span>Country, <span class="at">fixed =</span> <span class="cn">TRUE</span>), exportCountryDataPivot<span class="sc">$</span>Exports<span class="sc">/</span><span class="dv">1000</span>, exportCountryDataPivot<span class="sc">$</span>Exports)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot<span class="sc">$</span>Exports <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">"(Thousand Dollars)"</span>, exportContinentDataPivot<span class="sc">$</span>Continent, <span class="at">fixed =</span> <span class="cn">TRUE</span>), exportContinentDataPivot<span class="sc">$</span>Exports<span class="sc">/</span><span class="dv">1000</span>, exportContinentDataPivot<span class="sc">$</span>Exports)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>To remove the (Thousand Dollars) and (Million Dollars) appended to each row.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>importCountryDataPivot<span class="sc">$</span>Country<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Thousand Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(importCountryDataPivot<span class="sc">$</span>Country))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot<span class="sc">$</span>Continent<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Thousand Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(importContinentDataPivot<span class="sc">$</span>Continent))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>exportCountryDataPivot<span class="sc">$</span>Country<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Thousand Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(exportCountryDataPivot<span class="sc">$</span>Country))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot<span class="sc">$</span>Continent<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Thousand Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(exportContinentDataPivot<span class="sc">$</span>Continent))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>importCountryDataPivot<span class="sc">$</span>Country<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Million Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(importCountryDataPivot<span class="sc">$</span>Country))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot<span class="sc">$</span>Continent<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Million Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(importContinentDataPivot<span class="sc">$</span>Continent))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>exportCountryDataPivot<span class="sc">$</span>Country<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Million Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(exportCountryDataPivot<span class="sc">$</span>Country))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot<span class="sc">$</span>Continent<span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">" [(]Million Dollars[)]"</span>,<span class="st">""</span>,<span class="fu">as.character</span>(exportContinentDataPivot<span class="sc">$</span>Continent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>To cast the yearmonth column into Date type.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>importCountryDataPivot<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(importCountryDataPivot<span class="sc">$</span>Date, <span class="st">"01"</span>), <span class="at">format =</span> <span class="st">"%Y %b %d"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(importContinentDataPivot<span class="sc">$</span>Date, <span class="st">"01"</span>), <span class="at">format =</span> <span class="st">"%Y %b %d"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>exportCountryDataPivot<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(exportCountryDataPivot<span class="sc">$</span>Date, <span class="st">"01"</span>), <span class="at">format =</span> <span class="st">"%Y %b %d"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(exportContinentDataPivot<span class="sc">$</span>Date, <span class="st">"01"</span>), <span class="at">format =</span> <span class="st">"%Y %b %d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li>Pivot the countries into the required format for cycleplot.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>importCountryDataCyclePivot <span class="ot">&lt;-</span> importCountryDataPivot <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Country"</span>, <span class="at">values_from =</span> <span class="st">"Imports"</span> )</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>exportCountryDataCyclePivot <span class="ot">&lt;-</span> exportCountryDataPivot <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"Country"</span>, <span class="at">values_from =</span> <span class="st">"Exports"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li>To add month and year columns to the data for further use.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>importCountryDataCyclePivot<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">month</span>(importCountryDataCyclePivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>), </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels=</span>month.abb, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered=</span><span class="cn">TRUE</span>) </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>importCountryDataCyclePivot<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(<span class="fu">ymd</span>(importCountryDataCyclePivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">month</span>(importContinentDataPivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>), </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels=</span>month.abb, </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered=</span><span class="cn">TRUE</span>) </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>importContinentDataPivot<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(<span class="fu">ymd</span>(importContinentDataPivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>))</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>exportCountryDataCyclePivot<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">month</span>(exportCountryDataCyclePivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>), </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels=</span>month.abb, </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered=</span><span class="cn">TRUE</span>) </span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>exportCountryDataCyclePivot<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(<span class="fu">ymd</span>(exportCountryDataCyclePivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>))</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">month</span>(exportContinentDataPivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>), </span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, </span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels=</span>month.abb, </span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered=</span><span class="cn">TRUE</span>) </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>exportContinentDataPivot<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(<span class="fu">ymd</span>(exportContinentDataPivot<span class="sc">$</span><span class="st">`</span><span class="at">Date</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="6" type="1">
+<li></li>
+</ol>
+</section>
+</section>
+<section id="continent-country-trade-visual-analysis" class="level1">
+<h1>Continent &amp; Country Trade Visual Analysis</h1>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Continent</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Country</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Imports</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Exports</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Mainland China</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">India</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Malaysia</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Hong Kong</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">Taiwan</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Take-Home_Ex04_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

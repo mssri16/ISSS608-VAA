@@ -1,4 +1,391 @@
 ---
 title: "Take-Home_Ex04"
 author: "Srivatsan Madapuzi Srinivasan"
+date: "25 February 2023"
+date-modified: "`r Sys.Date()`"
+format: html
+execute: 
+  eval: true
+  warning: false
+editor: visual
 ---
+
+# Overview
+
+The objective is to uncover the impact of COVID-19 as well as the global & political dynamic in 2022 on Singapore's bilateral trade.
+
+The primary focus is on the period between January 2020 and December 2022.
+
+# Data
+
+The merchandise trade data is available at [Data.gov.sg](https://data.gov.sg/) under the sub-section of Merchandise Trade by Region/Market. The data is downloaded by clicking on the link Download all in Excel under the previously mentioned sub-section.
+
+# Data Preparation
+
+## Load the packages
+
+The required packages are to be loaded for the purpose of visualization.
+
+```{r}
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, tidyverse, readxl, knitr, data.table, readxl, lubridate, stringr, dplyr, gganimate, transformr, patchwork, countrycode)
+```
+
+## Load the data
+
+Run the following code to load the imported data for continents and countries.
+
+```{r}
+imported_continents <- read_excel("data/Merchandise Trade by RegionMarket.xlsx", 
+                          sheet = "T1",
+                          range = cell_rows(10:16))%>%
+  select(`Data Series`, contains(c("2020", "2021", "2022"))) %>%
+  slice(-1)
+
+imported_continents
+```
+
+```{r}
+imported_countries <- read_excel("data/Merchandise Trade by RegionMarket.xlsx", 
+                          sheet = "T1",
+                          range = cell_rows(10:101))%>%
+  select(`Data Series`, contains(c("2020", "2021", "2022"))) %>%
+  slice(-1:-7)
+
+imported_countries
+```
+
+Similar to the way imported data is imported, import the exported data from the sheet T2.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Exported Data Code"
+exported_continents <- read_excel("data/Merchandise Trade by RegionMarket.xlsx", 
+                          sheet = "T2",
+                          range = cell_rows(10:16))%>%
+  select(`Data Series`, contains(c("2020", "2021", "2022"))) %>%
+  slice(-1)
+
+exported_countries <- read_excel("data/Merchandise Trade by RegionMarket.xlsx", 
+                          sheet = "T2",
+                          range = cell_rows(10:101))%>%
+  select(`Data Series`, contains(c("2020", "2021", "2022"))) %>%
+  slice(-1:-7)
+```
+
+## Analyze and Clean Data
+
+Here are the following observations after scanning through the data,
+
+1.  The data consists of the merchandise exports and imports by Region/Market monthly in two different worksheets.
+2.  The data consists of both country and continental merchandise exports and imports amount.
+3.  The data is inconsistent as the country exports and imports amount are in thousands while the continental exports and imports amount are in millions.
+
+To clean the data the following steps are followed,
+
+1.  Pivot the import and export details of countries and continents,
+
+```{r}
+importCountryDataPivot <- imported_countries %>%
+  pivot_longer(cols = 2:37, names_to = "yearmonth", values_to = "Imports" )
+importContinentDataPivot <- imported_continents %>%
+  pivot_longer(cols = 2:37, names_to = "yearmonth", values_to = "Imports" )
+
+exportCountryDataPivot <- exported_countries %>%
+  pivot_longer(cols = 2:37, names_to = "yearmonth", values_to = "Exports" )
+exportContinentDataPivot <- exported_continents %>%
+  pivot_longer(cols = 2:37, names_to = "yearmonth", values_to = "Exports" )
+
+colnames(importCountryDataPivot) <- c("Country", "Date", "Imports")
+colnames(importContinentDataPivot) <- c("Continent", "Date", "Imports")
+
+colnames(exportCountryDataPivot) <- c("Country", "Date", "Exports")
+colnames(exportContinentDataPivot) <- c("Continent", "Date", "Exports")
+```
+
+2.  To make the data consistent, convert the country's merchandise imports and exports into millions.
+
+```{r}
+importCountryDataPivot$Imports <- ifelse(grepl("(Thousand Dollars)", importCountryDataPivot$Country, fixed = TRUE), importCountryDataPivot$Imports/1000, importCountryDataPivot$Imports)
+
+importContinentDataPivot$Imports <- ifelse(grepl("(Thousand Dollars)", importContinentDataPivot$Continent, fixed = TRUE), importContinentDataPivot$Imports/1000, importContinentDataPivot$Imports)
+
+exportCountryDataPivot$Exports <- ifelse(grepl("(Thousand Dollars)", exportCountryDataPivot$Country, fixed = TRUE), exportCountryDataPivot$Exports/1000, exportCountryDataPivot$Exports)
+
+exportContinentDataPivot$Exports <- ifelse(grepl("(Thousand Dollars)", exportContinentDataPivot$Continent, fixed = TRUE), exportContinentDataPivot$Exports/1000, exportContinentDataPivot$Exports)
+
+```
+
+3.  To remove the (Thousand Dollars) and (Million Dollars) appended to each row.
+
+```{r}
+importCountryDataPivot$Country<-gsub(" [(]Thousand Dollars[)]","",as.character(importCountryDataPivot$Country))
+importContinentDataPivot$Continent<-gsub(" [(]Thousand Dollars[)]","",as.character(importContinentDataPivot$Continent))
+
+exportCountryDataPivot$Country<-gsub(" [(]Thousand Dollars[)]","",as.character(exportCountryDataPivot$Country))
+exportContinentDataPivot$Continent<-gsub(" [(]Thousand Dollars[)]","",as.character(exportContinentDataPivot$Continent))
+
+importCountryDataPivot$Country<-gsub(" [(]Million Dollars[)]","",as.character(importCountryDataPivot$Country))
+importContinentDataPivot$Continent<-gsub(" [(]Million Dollars[)]","",as.character(importContinentDataPivot$Continent))
+
+exportCountryDataPivot$Country<-gsub(" [(]Million Dollars[)]","",as.character(exportCountryDataPivot$Country))
+exportContinentDataPivot$Continent<-gsub(" [(]Million Dollars[)]","",as.character(exportContinentDataPivot$Continent))
+```
+
+4.  To cast the yearmonth column into Date type.
+
+```{r}
+importCountryDataPivot$Date <- as.Date(paste(importCountryDataPivot$Date, "01"), format = "%Y %b %d")
+importContinentDataPivot$Date <- as.Date(paste(importContinentDataPivot$Date, "01"), format = "%Y %b %d")
+exportCountryDataPivot$Date <- as.Date(paste(exportCountryDataPivot$Date, "01"), format = "%Y %b %d")
+exportContinentDataPivot$Date <- as.Date(paste(exportContinentDataPivot$Date, "01"), format = "%Y %b %d")
+```
+
+5.  Pivot the countries into the required format for cycleplot.
+
+```{r}
+importCountryDataCyclePivot <- importCountryDataPivot %>%
+  pivot_wider(names_from = "Country", values_from = "Imports" )
+exportCountryDataCyclePivot <- exportCountryDataPivot %>%
+  pivot_wider(names_from = "Country", values_from = "Exports" )
+```
+
+5.  To add month and year columns to the data for further use.
+
+```{r}
+importCountryDataCyclePivot$month <- factor(month(importCountryDataCyclePivot$`Date`), 
+                    levels=1:12, 
+                    labels=month.abb, 
+                    ordered=TRUE) 
+importCountryDataCyclePivot$year <- year(ymd(importCountryDataCyclePivot$`Date`))
+
+importContinentDataPivot$month <- factor(month(importContinentDataPivot$`Date`), 
+                    levels=1:12, 
+                    labels=month.abb, 
+                    ordered=TRUE) 
+importContinentDataPivot$year <- year(ymd(importContinentDataPivot$`Date`))
+
+exportCountryDataCyclePivot$month <- factor(month(exportCountryDataCyclePivot$`Date`), 
+                    levels=1:12, 
+                    labels=month.abb, 
+                    ordered=TRUE) 
+exportCountryDataCyclePivot$year <- year(ymd(exportCountryDataCyclePivot$`Date`))
+
+exportContinentDataPivot$month <- factor(month(exportContinentDataPivot$`Date`), 
+                    levels=1:12, 
+                    labels=month.abb, 
+                    ordered=TRUE) 
+exportContinentDataPivot$year <- year(ymd(exportContinentDataPivot$`Date`))
+```
+
+6.  
+
+# Continent & Country Trade Visual Analysis
+
+::: panel-tabset
+## Continent
+
+::: panel-tabset
+## Imports
+
+```{r}
+#| echo: false
+ggplot(importContinentDataPivot,
+       aes(x = `Date`, y = `Imports`, color = `Continent`)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Import in Million Dollars",
+        fill = "Continent",
+        title = "Import in Million Dollars by Continent") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw() 
+```
+
+## Exports
+
+```{r}
+#| echo: false
+ggplot(exportContinentDataPivot,
+       aes(x = `Date`, y = Exports, color = Continent)) +
+  geom_line()+
+  labs (x = "Date",
+        y = "Export in Million Dollars",
+        fill = "Continent",
+        title = "Export in Million Dollars by Continent") +
+  scale_x_date(date_labels = "%b-%y")+
+  theme_bw()
+```
+:::
+
+## Country
+
+::: panel-tabset
+## Mainland China
+
+```{r}
+#| echo: false
+china_imports <- importCountryDataCyclePivot %>% 
+  select(`Mainland China`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+china_exports <- exportCountryDataCyclePivot %>% 
+  select(`Mainland China`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+ggplot() + 
+  geom_line(data=china_exports,
+            aes(x=year, 
+                y=`Mainland China`, 
+                group=month,
+                colour = "Exports")
+            ) +
+  geom_line(data=china_imports,
+            aes(x=year, 
+                y=`Mainland China`, 
+                group=month,
+                colour = "Imports")
+            ) + 
+  scale_color_manual(name = "", values = c("Exports" = "darkblue", "Imports" = "red"))+
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors")
+```
+
+## India
+
+```{r}
+#| echo: false
+india_imports <- importCountryDataCyclePivot %>% 
+  select(`India`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+india_exports <- exportCountryDataCyclePivot %>% 
+  select(`India`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+ggplot() + 
+  geom_line(data=india_exports,
+            aes(x=year, 
+                y=`India`, 
+                group=month, 
+            colour="Exports"),
+            show.legend = TRUE) +
+  geom_line(data=india_imports,
+            aes(x=year, 
+                y=`India`, 
+                group=month, 
+            colour="Imports"),
+              show.legend = TRUE) +
+  scale_color_manual(name = "", values = c("Exports" = "darkblue", "Imports" = "red"))+
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors")
+```
+
+## Malaysia
+
+```{r}
+#| echo: false
+malaysia_imports <- importCountryDataCyclePivot %>% 
+  select(`Malaysia`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+malaysia_exports <- exportCountryDataCyclePivot %>% 
+  select(`Malaysia`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+ggplot() + 
+  geom_line(data=malaysia_exports,
+            aes(x=year, 
+                y=`Malaysia`, 
+                group=month, 
+            colour="Exports")) +
+  geom_line(data=malaysia_imports,
+            aes(x=year, 
+                y=`Malaysia`, 
+                group=month, 
+            colour="Imports")) + 
+  scale_color_manual(name = "", values = c("Exports" = "darkblue", "Imports" = "red"))+
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors")
+```
+
+## Hong Kong
+
+```{r}
+#| echo: false
+hk_imports <- importCountryDataCyclePivot %>% 
+  select(`Hong Kong`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+hk_exports <- exportCountryDataCyclePivot %>% 
+  select(`Hong Kong`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+ggplot() + 
+  geom_line(data=hk_exports,
+            aes(x=year, 
+                y=`Hong Kong`, 
+                group=month, 
+            colour="Exports")) +
+  geom_line(data=hk_imports,
+            aes(x=year, 
+                y=`Hong Kong`, 
+                group=month, 
+            colour="Imports")) + 
+  scale_color_manual(name = "", values = c("Exports" = "darkblue", "Imports" = "red"))+
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors")
+```
+
+## Taiwan
+
+```{r}
+#| echo: false
+taiwan_imports <- importCountryDataCyclePivot %>% 
+  select(`Taiwan`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+taiwan_exports <- exportCountryDataCyclePivot %>% 
+  select(`Taiwan`, 
+         month, 
+         year) %>%
+  filter(year >= 2020)
+ggplot() + 
+  geom_line(data=taiwan_exports,
+            aes(x=year, 
+                y=`Taiwan`, 
+                group=month, 
+            colour="Exports")) +
+  geom_line(data=taiwan_imports,
+            aes(x=year, 
+                y=`Taiwan`, 
+                group=month, 
+            colour="Imports")) + 
+  scale_color_manual(name = "", values = c("Exports" = "darkblue", "Imports" = "red"))+
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors")
+```
+:::
+:::
