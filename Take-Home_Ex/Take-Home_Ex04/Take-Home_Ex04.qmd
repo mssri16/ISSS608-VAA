@@ -197,8 +197,14 @@ ggplot(importContinentDataPivot,
         fill = "Continent",
         title = "Import in Million Dollars by Continent") +
   scale_x_date(date_labels = "%b-%y")+
-  theme_bw() 
+  theme_bw()  
 ```
+
+- The overall import trade follows similar trend, with Asia having the highest import price, and Africa and Oceania being the lowest.
+- Since the time period is during COVID-19, the import trade price has reduced in March/April of 2020, possibly due to lockdown.
+- The Europe and America has an average of over 5000 Million Dollars throughout the time period.\
+- Asian region has a noticable difference in price trend, whereas the other
+continents have a constant throughout this period
 
 ## Exports
 
@@ -214,6 +220,10 @@ ggplot(exportContinentDataPivot,
   scale_x_date(date_labels = "%b-%y")+
   theme_bw()
 ```
+
+\- The export trend of Asian continent similar to import has an average trade price of 35000 Million Dollars, with minimum of 24000M\$ during peak covid in March 2020, and reaching maximum of 46000M\$ in Q2&Q3 of 2022, suggesting the exports improved post-covid.
+- The export performance of Europe and America follow a similar trend with an average of 6500M\$ over the years, followed by Oceania with an average of about 2000M\$, and Africa being the least of all.
+- Asian countries seem to have high demand in imports and exports as interpreted from the graph
 :::
 
 ## Country
@@ -254,6 +264,17 @@ ggplot() +
   ylab("No. of Visitors")
 ```
 
+**Imports:**
+- The overall imports observed are gradually increasing across the years.\
+- The Maximum import is observed in China is in 2018-2019 July, it being a seasonal time increasing the demand
+- There is very less change in import quantity during the Month of March during this decade
+- There is a gradual increase observed from 2010-2015, with decrease in import price in some months such as Dec, Feb, and April, and gradual increase across all the other months from
+2015-2019.\
+**Exports:\
+-** The export has increased gradually from 2010-2016 for all months, after which the monthly export is improving for some months such as Jan, Feb, March (with maximum of 8800M\$), and all the other month the export price has sharply dropped.
+- The maximum export price in China is observed in 2016 December with over 9000M\$.
+- While the export has reduced over the years from 2016, leading to decrease upto 6500M\$ in Dec 2019.
+
 ## India
 
 ```{r}
@@ -289,6 +310,16 @@ ggplot() +
   ylab("No. of Visitors")
 ```
 
+**Imports:**
+- In comparison, the imports in India are lesser than the exports, with an average price of 800M\$ for import.
+- The seasonal pattern of increase in import can be observed in July.
+- Over the years, the import price has increased and decreased for some months such as Dec, and No.\
+- Gradual increase is observed in the other months over the years\
+**Exports:\
+-** The exports price are much more in India than inputs, maybe due to large scale production of food, grains, silk and other essentials.
+- Across the years, a decent increase in the import trade can be observed.
+- The trade has decreased from 2016-2019 in the month of Oct and Nov, otherwise the export performance is quite good.
+
 ## Malaysia
 
 ```{r}
@@ -321,6 +352,14 @@ ggplot() +
   xlab("") +
   ylab("No. of Visitors")
 ```
+
+**Imports:**
+- The import price is slightly higher than the export price in Malaysia, and the trend is gradually increasing across the decade, except in Dec. In Dec, the trend is dropping from 2016-2019.
+- March has the highest import, could also support this inference with the festival season of Hari Raya Pussa in Malaysia.\
+**Exports:\
+**- Exports are high during May, June, and July, with an average price
+of 6500M\$
+- The overall trend of the export increases over the years.
 
 ## Hong Kong
 
@@ -355,6 +394,15 @@ ggplot() +
   ylab("No. of Visitors")
 ```
 
+**Imports:**
+- The imports in Hong Kong, unlike the other countries, is very menial with less than 1000M\$ price
+- The importing has a trend that is going down over the years especially during months such as Oct, Nov, Dec
+- Only during Jan and May, there is some positive trend in the imports but with very small slope\
+**Exports:\
+**- Export on the other hand, is very good for HK, with an overall avg
+of 7000M\$ over the years
+- A steady increase is observed from 2010 to 2015, and after that gradually increases for some months such as Jan, May, June suggesting festival/seasonal months, and decreases for some months such as Oct, Nov and Dec
+
 ## Taiwan
 
 ```{r}
@@ -388,4 +436,16 @@ ggplot() +
   ylab("No. of Visitors")
 ```
 :::
+
+**Imports**:
+- Taiwan has high import price than export, suggesting the country size and resources
+- There is an overall increase in import price from Jan-Aug during the decade. Decreases after 2015 for some months such as Sep,Nov and Dec
+**Exports**:
+- The exports follow the same pattern as imports in terms of trend, however the price of the exports are much lesser than the imports.
 :::
+
+# Conclusion:
+
+\- China has the maximum import and export price when compared to all other countries.
+- Malaysia follows China in Import price, and HK follows China in Export price.
+- India has the least import and export price when compared to the other.
